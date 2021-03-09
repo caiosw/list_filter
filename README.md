@@ -1,6 +1,6 @@
 # ListFilter
 
-**TODO: Add description**
+challenge list_filter for Rocketseat's Ignite course
 
 ## Installation
 
