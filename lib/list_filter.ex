@@ -1,18 +1,24 @@
+require Integer
+
 defmodule ListFilter do
-  @moduledoc """
-  Documentation for `ListFilter`.
-  """
+  def call(list) do
+    sum =
+      Enum.flat_map_reduce(list, 0, fn
+        elem, acc ->
+          case Integer.parse(elem) do
+            {num, _rest} ->
+              if Integer.is_odd(num) do
+                {[num], acc + num}
+              else
+                {[elem], acc}
+              end
 
-  @doc """
-  Hello world.
+            :error ->
+              {[elem], acc}
+          end
+      end)
 
-  ## Examples
-
-      iex> ListFilter.hello()
-      :world
-
-  """
-  def hello do
-    :world
+    {_list, result} = sum
+    result
   end
 end
